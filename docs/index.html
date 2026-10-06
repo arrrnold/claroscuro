@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claroscuro — fondo claro/oscuro para macOS</title>
+  <meta name="description" content="Crea un fondo de pantalla para macOS que cambia solo entre modo claro y oscuro. Gratis, libre y sin subir tus imágenes a ningún servidor.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23ecb85a'/><path d='M16 2a14 14 0 0 0 0 28z' fill='%23f341de'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div class="logo" aria-hidden="true"></div>
+      <h1>Claroscuro</h1>
+      <p class="tagline">Un fondo de pantalla para macOS que cambia solo con el <strong>modo claro</strong> y el <strong>modo oscuro</strong>.</p>
+      <p class="privacy">Todo ocurre en tu navegador. Tus imágenes no se suben a ningún lado.</p>
+    </header>
+
+    <section class="pickers">
+      <label class="picker" data-slot="light">
+        <span class="picker-title">Modo claro</span>
+        <span class="drop">
+          <img alt="" hidden>
+          <span class="hint">Arrastra una imagen o haz clic</span>
+        </span>
+        <span class="meta"></span>
+        <input type="file" accept="image/*">
+      </label>
+
+      <label class="picker" data-slot="dark">
+        <span class="picker-title">Modo oscuro</span>
+        <span class="drop">
+          <img alt="" hidden>
+          <span class="hint">Arrastra una imagen o haz clic</span>
+        </span>
+        <span class="meta"></span>
+        <input type="file" accept="image/*">
+      </label>
+    </section>
+
+    <section class="preview" aria-label="Vista previa">
+      <div class="screen" data-mode="light">
+        <div class="screen-bg light"></div>
+        <div class="screen-bg dark"></div>
+        <div class="menubar"><span></span><span class="clock"></span></div>
+      </div>
+      <div class="mode-toggle" role="group" aria-label="Simular apariencia">
+        <button type="button" data-mode="light" aria-pressed="true">Claro</button>
+        <button type="button" data-mode="dark" aria-pressed="false">Oscuro</button>
+      </div>
+    </section>
+
+    <section class="actions">
+      <label class="quality">
+        Calidad <output>85</output>
+        <input type="range" min="40" max="100" value="85">
+      </label>
+      <button type="button" class="create" disabled>Crear fondo</button>
+      <div class="progress" hidden><div></div></div>
+      <p class="status" role="status"></p>
+      <a class="download" hidden download="claroscuro.heic">Descargar claroscuro.heic</a>
+    </section>
+
+    <section class="howto">
+      <h2>Cómo usarlo</h2>
+      <ol>
+        <li>Descarga el archivo <code>.heic</code> y guárdalo en una carpeta fija (por ejemplo, <code>Imágenes</code>).</li>
+        <li>Abre <strong>Ajustes del Sistema → Fondo de pantalla</strong> y pulsa <strong>«Añadir foto»</strong> (o arrastra el archivo).</li>
+        <li>Deja la opción en <strong>«Automático»</strong>. ¡Listo! Cambia de modo y verás cómo cambia el fondo.</li>
+      </ol>
+      <p class="note">También puedes hacer clic derecho en el archivo en Finder → <em>Definir imagen de escritorio</em>.</p>
+    </section>
+
+    <section class="unsupported" hidden>
+      <h2>Tu navegador no puede crear el archivo</h2>
+      <p>Esta página necesita codificar HEVC con WebCodecs, algo que hacen <strong>Safari</strong> y <strong>Chrome</strong> en un Mac. Otra opción es el script de la terminal, que solo usa herramientas de Apple:</p>
+      <pre><code>swift claroscuro.swift claro.jpg oscuro.jpg MiFondo.heic</code></pre>
+    </section>
+
+    <footer>
+      Software libre (MIT) ·
+      <a href="https://github.com/arrrnold/claroscuro" class="repo-link">Código en GitHub</a> ·
+      También disponible como script de terminal.
+    </footer>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
